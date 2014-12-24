@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+	
+	<xacro:macro name="insert_mesh_link1">
+		<geometry>
+			<mesh filename="package://safe_arm_meshes/meshes/link1.dae" scale="0.001 0.001 0.001"/>					
+		</geometry>
+	</xacro:macro>
+
+	<xacro:macro name="insert_mesh_link2">
+		<geometry>
+			<mesh filename="package://safe_arm_meshes/meshes/link2.dae" scale="0.001 0.001 0.001"/>					
+		</geometry>
+	</xacro:macro>
+
+	<xacro:macro name="insert_mesh_link3">
+		<geometry>
+			<mesh filename="package://safe_arm_meshes/meshes/link3.dae" scale="0.001 0.001 0.001"/>					
+		</geometry>
+	</xacro:macro>
+
+	<xacro:macro name="insert_mesh_link4">
+		<geometry>
+			<mesh filename="package://safe_arm_meshes/meshes/link4.dae" scale="0.001 0.001 0.001"/>					
+		</geometry>
+	</xacro:macro>
+
+	<xacro:macro name="insert_mesh_link5">
+		<geometry>
+			<mesh filename="package://safe_arm_meshes/meshes/link5.dae" scale="0.001 0.001 0.001"/>					
+		</geometry>
+	</xacro:macro>
+
+	<xacro:macro name="insert_mesh_link6">
+		<geometry>
+			<mesh filename="package://safe_arm_meshes/meshes/link6.dae" scale="0.001 0.001 0.001"/>					
+		</geometry>
+	</xacro:macro>
+
+	<xacro:macro name="insert_mesh_link7">
+		<geometry>
+			<mesh filename="package://safe_arm_meshes/meshes/link7.dae" scale="0.001 0.001 0.001"/>					
+		</geometry>
+	</xacro:macro>
+
+	<xacro:macro name="insert_mesh_link8">
+		<geometry>
+			<mesh filename="package://safe_arm_meshes/meshes/link8.dae" scale="0.001 0.001 0.001"/>					
+		</geometry>
+	</xacro:macro>
+
+	<xacro:macro name="insert_mesh_link9">
+		<geometry>
+			<mesh filename="package://safe_arm_meshes/meshes/link9.dae" scale="0.001 0.001 0.001"/>					
+		</geometry>
+	</xacro:macro>
+
+	<xacro:macro name="insert_mesh_link_end_effector">
+		<geometry>
+			<cylinder length="0.06" radius="0.01" />
+		</geometry>
+		<material name="SkyBlue">
+			<color rgba="0.0 0.7 1.0 1.0" />
+		</material>
+	</xacro:macro>
+
+</robot>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package>
+	<name>safe_arm_meshes</name>
+	<version>1.0.0</version>
+	<description>Safe Arm Meshes</description>
+
+	<maintainer email="byeongkyu@gmail.com">Byeong-Kyu Ahn</maintainer>
+
+	<license>BSD</license>
+
+	<url type="repository">https://github.com/byeongkyu/safe_arm</url>
+	<author email="byeongkyu@gmail.com">Byeong-Kyu Ahn</author>
+
+	<buildtool_depend>catkin</buildtool_depend>
+
+	<export>
+	</export>
+</package>

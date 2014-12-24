@@ -1,0 +1,13 @@
+<launch>
+
+	<rosparam file="$(find safe_arm_control)/config/joint_state.yaml" command="load"/>
+
+	<node name="joint_controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+		output="screen" ns="/safe_arm" args="joint_state_controller" />
+
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"  	
+		respawn="false" output="screen">
+		<remap from="/joint_states" to="/safe_arm/joint_states" />
+	</node>
+
+</launch>

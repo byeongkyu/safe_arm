@@ -1,0 +1,14 @@
+<launch>
+	<rosparam file="$(find safe_arm_control)/config/l_seperate_control.yaml" command="load"/>	
+
+	<node name="l_controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+		output="screen" ns="/safe_arm" args="l_shoulder_yaw_joint_controller
+											 l_shoulder_pitch_joint_controller
+											 l_shoulder_roll_joint_controller
+											 l_underarm_joint_controller
+											 l_elbow_pitch_joint_controller
+											 l_elbow_yaw_joint_controller
+											 l_wrist_pitch_joint_controller
+											 l_wrist_roll_joint_controller 
+		"/>
+</launch>

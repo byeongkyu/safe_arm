@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="safe_arm">
+	<gazebo>
+    	<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      		<robotNamespace>/safe_arm</robotNamespace>
+      		<robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+    	</plugin>
+  </gazebo>
+</robot>

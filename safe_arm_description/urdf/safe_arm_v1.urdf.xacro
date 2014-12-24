@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="safe_arm">
+	<!--
+    	This file loads a basic visualization of safe_arm and the structure (you need both)
+   	-->   	
+	<xacro:include filename="$(find safe_arm_description)/urdf/visuals.xacro" />
+	<xacro:include filename="$(find safe_arm_description)/urdf/safe_arm_v1.limits.xacro" />
+	<xacro:include filename="$(find safe_arm_description)/urdf/safe_arm_v1.structure.xacro" />
+	<xacro:include filename="$(find safe_arm_description)/urdf/safe_arm_v1.transmission.xacro" />
+	<xacro:include filename="$(find safe_arm_description)/urdf/safe_arm_v1.gazebo.xacro" />
+	<xacro:include filename="$(find safe_arm_description)/urdf/safe_arm_v1.inertia.xacro" />
+
+	<link name="world" />
+
+	<joint name="world_base_footprint_joint" type="fixed">
+    	<parent link="world"/>
+    	<child link="base_footprint"/>
+  	</joint>
+
+	<link name="base_footprint" />			
+	<link name="base_link" />	
+
+	<joint name="base_footprint_link_joint" type="fixed">
+    	<parent link="base_footprint"/>
+    	<child link="base_link"/>
+  	</joint>
+
+	<link name="torso" />
+	<!--
+		<collision>
+			<geometry>
+				<box size="0.001 0.001 0.001" />
+			</geometry>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+		</collision>
+		<visual>
+			<geometry>
+				<box size="0.001 0.001 0.001" />
+			</geometry>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+		</visual>
+		<inertia>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<mass value="0.001" />
+			<inertia ixx="0.000001" ixy="0.0" ixz="0.0" iyy="0.000001" iyz="0.0" izz="0.000001" />
+		</inertia>
+	</link>
+-->
+
+	<joint name="base_link_torso_joint" type="fixed">
+		<origin xyz="0 0 1.0" rpy="0 0 0" />
+		<parent link="base_link" />
+		<child link="torso" />
+	</joint>
+
+	<!-- Attatch Left and Right Safe Arm to Torso Link -->
+	<xacro:safe_arm side="l" reflect="1" parent="torso" />
+	<xacro:safe_arm side="r" reflect="-1" parent="torso" />
+
+</robot>

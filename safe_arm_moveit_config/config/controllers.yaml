@@ -1,0 +1,25 @@
+controller_list:
+  - name: "safe_arm/l_arm_joint_controller"
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    joints:
+      - l_shoulder_yaw_joint
+      - l_shoulder_pitch_joint
+      - l_shoulder_roll_joint
+      - l_underarm_joint
+      - l_elbow_pitch_joint
+      - l_elbow_yaw_joint
+      - l_wrist_pitch_joint
+      - l_wrist_roll_joint
+  - name: "safe_arm/r_arm_joint_controller"
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    joints:
+      - r_shoulder_yaw_joint
+      - r_shoulder_pitch_joint
+      - r_shoulder_roll_joint
+      - r_underarm_joint
+      - r_elbow_pitch_joint
+      - r_elbow_yaw_joint
+      - r_wrist_pitch_joint
+      - r_wrist_roll_joint

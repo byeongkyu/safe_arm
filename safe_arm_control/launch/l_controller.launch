@@ -1,0 +1,7 @@
+<launch>
+	<rosparam file="$(find safe_arm_control)/config/l_control.yaml" command="load"/>
+
+	<node name="l_controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+		output="screen" ns="/safe_arm" args="l_arm_joint_controller"/>
+
+</launch>

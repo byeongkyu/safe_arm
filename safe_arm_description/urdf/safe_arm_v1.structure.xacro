@@ -1,0 +1,275 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">	
+
+	<xacro:property name="pi" value="3.141592654" />
+	<xacro:macro name="safe_arm" params="side reflect parent">	
+
+		<link name="${side}_shoulder_base_link">
+			<visual>
+				<origin xyz="0 0 0" rpy="0 0 ${reflect*pi/2}" />
+				<xacro:insert_mesh_link1 />				
+			</visual>
+			<collision>
+				<xacro:insert_mesh_link1 />						
+				<origin xyz="0 0 0" rpy="0 0 ${reflect*pi/2}" />
+			</collision>			
+			<inertial>
+				<origin xyz="${reflect*0.0000086} ${reflect*0.0361626} -0.0089504" rpy="0 0 ${reflect*pi/2}"/>
+        		<xacro:insert_inertia_link1 />
+    		</inertial>		
+		</link>
+
+		<joint name="${side}_shoulder_base" type="fixed">
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<parent link="${parent}" />
+			<child link="${side}_shoulder_base_link" />
+		</joint>
+
+
+		<link name="${side}_shoulder_yaw_link">
+			<visual>
+				<xacro:insert_mesh_link2 />					
+				<origin xyz="0 0 0" rpy="0 0 ${reflect*pi/2}" />				
+			</visual>
+			<collision>
+				<xacro:insert_mesh_link2 />					
+				<origin xyz="0 0 0" rpy="0 0 ${reflect*pi/2}" />
+			</collision>	
+			<inertial>				
+				<origin xyz="${reflect*-0.0000110} ${reflect*0.0319139} -0.0031692" rpy="0 0 ${reflect*pi/2}" />
+        		<xacro:insert_inertia_link2 />
+    		</inertial>			
+		</link>		
+
+		<joint name="${side}_shoulder_yaw_joint" type="revolute">
+			<axis xyz="0 0 1" />						
+			<origin xyz="0 ${reflect*0.044} 0.01" rpy="0 0 0" />
+			<parent link="${side}_shoulder_base_link" />
+			<child link="${side}_shoulder_yaw_link" />		
+			<limit velocity="2.0" effort="10000"
+				lower="${((reflect * (-1 * s_y_j_lower + s_y_j_upper)) / 2) - ((s_y_j_lower + s_y_j_upper) / 2)}"
+				upper="${((reflect * (-1 * s_y_j_lower + s_y_j_upper)) / 2) + ((s_y_j_lower + s_y_j_upper) / 2)}" />
+			<dynamics damping="0.5" friction="0.0" />	
+		</joint>	
+
+		<xacro:insert_transmission name="${side}_shoulder_yaw_joint" />
+
+
+		<link name="${side}_shoulder_pitch_link">
+			<visual>
+				<xacro:insert_mesh_link3 />	
+				<origin xyz="0 0 0" rpy="${-reflect*pi/2} 0 0" />
+			</visual>			
+			<collision>
+				<xacro:insert_mesh_link3 />	
+				<origin xyz="0 0 0" rpy="${-reflect*pi/2} 0 0" />
+			</collision>
+			<inertial>
+				<origin xyz="-0.0147118 ${reflect*0.0640507} -0.0010824 " rpy="${-reflect*pi/2} 0 0 " />
+        		<xacro:insert_inertia_link3 />
+    		</inertial>				
+		</link>
+
+		<joint name="${side}_shoulder_pitch_joint" type="revolute">
+			<axis xyz="0 1 0" />			
+			<origin xyz="0 ${reflect*0.0555} 0" rpy="0 0 0" />
+			<parent link="${side}_shoulder_yaw_link" />
+			<child link="${side}_shoulder_pitch_link" />
+			<limit velocity="2.0" effort="10000" lower="${-1 * s_p_j_lower}" upper="${s_p_j_upper}" />
+			<dynamics damping="0.5" friction="0.0" />	
+		</joint>
+
+		<xacro:insert_transmission name="${side}_shoulder_pitch_joint" />
+
+
+		<link name="${side}_shoulder_roll_link">
+			<visual>
+				<xacro:insert_mesh_link4 />	
+				<origin xyz="0 0 0" rpy="0 0 ${pi/2}" />
+			</visual>
+			<collision>
+				<xacro:insert_mesh_link4 />	
+				<origin xyz="0 0 0" rpy="0 0 ${pi/2}" />
+			</collision>
+			<inertial>
+				<origin xyz="-0.0020936 0.0000194 -0.0306698" rpy="0 0 ${pi/2}" />
+        		<xacro:insert_inertia_link4 />
+    		</inertial>				
+		</link>
+
+		<joint name="${side}_shoulder_roll_joint" type="revolute">
+			<axis xyz="1 0 0" />			
+			<origin xyz="0 ${reflect*0.119} 0" rpy="0 0 0" />
+			<parent link="${side}_shoulder_pitch_link" />
+			<child link="${side}_shoulder_roll_link" />
+			<limit velocity="2.0" effort="10000"
+				lower="${((reflect * (-1 * s_r_j_lower + s_r_j_upper)) / 2) - ((s_r_j_lower + s_r_j_upper) / 2)}"
+				upper="${((reflect * (-1 * s_r_j_lower + s_r_j_upper)) / 2) + ((s_r_j_lower + s_r_j_upper) / 2)}" />			
+			<dynamics damping="0.5" friction="0.0" />	
+		</joint>
+
+		<xacro:insert_transmission name="${side}_shoulder_roll_joint" />
+
+
+		<link name="${side}_underarm_link">
+			<visual>
+				<xacro:insert_mesh_link5 />	
+				<origin xyz="0 0 0" rpy="0 0 ${pi/2}" />
+			</visual>
+			<collision>
+				<xacro:insert_mesh_link5 />	
+				<origin xyz="0 0 0" rpy="0 0 ${pi/2}" />
+			</collision>	
+			<inertial>
+				<origin xyz="0.0065368 0.0013104 -0.1269020" rpy="0 0 ${pi/2}" />
+        		<xacro:insert_inertia_link5 />
+    		</inertial>			
+		</link>
+
+		<joint name="${side}_underarm_joint" type="revolute">
+			<axis xyz="0 0 1" />			
+			<origin xyz="0 0 -0.058" rpy="0 0 0" />
+			<parent link="${side}_shoulder_roll_link" />
+			<child link="${side}_underarm_link" />				
+			<limit velocity="2.0" effort="10000"
+				lower="${((reflect * (-1 * u_j_lower + u_j_upper)) / 2) - ((u_j_lower + u_j_upper) / 2)}"
+				upper="${((reflect * (-1 * u_j_lower + u_j_upper)) / 2) + ((u_j_lower + u_j_upper) / 2)}" />			
+			<dynamics damping="0.5" friction="0.0" />
+		</joint>
+
+		<xacro:insert_transmission name="${side}_underarm_joint" />
+
+
+		<link name="${side}_elbow_pitch_link">
+			<visual>
+				<xacro:insert_mesh_link6 />	
+				<origin xyz="0 0 0" rpy="0 0 ${pi/2}" />
+			</visual>
+			<collision>
+				<xacro:insert_mesh_link6 />	
+				<origin xyz="0 0 0" rpy="0 0 ${pi/2}" />
+			</collision>
+			<inertial>
+				<origin xyz="-0.0150389 -0.0005238 -0.0240661" rpy="0 0 ${pi/2}" />
+        		<xacro:insert_inertia_link6 />
+    		</inertial>				
+		</link>
+
+		<joint name="${side}_elbow_pitch_joint" type="revolute">
+			<axis xyz="0 1 0" />			
+			<origin xyz="0.025 0 -0.240" rpy="0 0 0" />
+			<parent link="${side}_underarm_link" />
+			<child link="${side}_elbow_pitch_link" />
+			<limit velocity="2.0" effort="10000" lower="${-1 * e_p_lower}" upper="${e_p_upper}" />
+			<dynamics damping="0.5" friction="0.0" />	
+		</joint>
+
+		<xacro:insert_transmission name="${side}_elbow_pitch_joint" />
+
+
+		<link name="${side}_elbow_yaw_link">
+			<visual>
+				<xacro:insert_mesh_link7 />
+				<origin xyz="0 0 0" rpy="0 0 ${pi/2}" />
+			</visual>
+			<collision>
+				<xacro:insert_mesh_link7 />
+				<origin xyz="0 0 0" rpy="0 0 ${pi/2}" />
+			</collision>
+			<inertial>
+				<origin xyz="0.0004414 -0.0019565 -0.0821393" rpy="0 0 ${pi/2}" />
+        		<xacro:insert_inertia_link7 />
+    		</inertial>				
+		</link>
+
+		<joint name="${side}_elbow_yaw_joint" type="revolute">
+			<axis xyz="0 0 1" />			
+			<origin xyz="-0.025 0 -0.045" rpy="0 0 0" />
+			<parent link="${side}_elbow_pitch_link" />
+			<child link="${side}_elbow_yaw_link" />
+			<limit velocity="2.0" effort="10000" lower="${-1 * e_y_lower}" upper="${e_y_lower}" />
+			<dynamics damping="0.5" friction="0.0" />
+		</joint>
+
+		<xacro:insert_transmission name="${side}_elbow_yaw_joint" />
+
+
+		<link name="${side}_wrist_pitch_link">
+			<visual>
+				<xacro:insert_mesh_link8 />
+				<origin xyz="0 0 0" rpy="0 0 ${pi/2}" />
+			</visual>
+			<collision>
+				<xacro:insert_mesh_link8 />
+				<origin xyz="0 0 0" rpy="0 0 ${pi/2}" />
+			</collision>
+			<inertial>
+				<origin xyz="0.0004301 -0.0001058 0.0160042" rpy="0 0 ${pi/2}" />
+        		<xacro:insert_inertia_link8 />
+    		</inertial>				
+		</link>
+
+		<joint name="${side}_wrist_pitch_joint" type="revolute">
+			<axis xyz="0 1 0" />			
+			<origin xyz="0 0 -0.240" rpy="0 0 0" />
+			<parent link="${side}_elbow_yaw_link" />
+			<child link="${side}_wrist_pitch_link" />
+			<limit velocity="2.0" effort="10000" lower="${-1 * w_p_lower}" upper="${w_p_upper}" />
+			<dynamics damping="0.5" friction="0.0" />
+		</joint>
+
+		<xacro:insert_transmission name="${side}_wrist_pitch_joint" />
+
+
+		<link name="${side}_wrist_roll_link">
+			<visual>
+				<xacro:insert_mesh_link9 />
+				<origin xyz="0 0 0" rpy="0 0 ${pi/2}" />
+			</visual>
+			<collision>
+				<xacro:insert_mesh_link9 />
+				<origin xyz="0 0 0" rpy="0 0 ${pi/2}" />
+			</collision>
+			<inertial>
+				<origin xyz="0.0004301 -0.0001058 0.0160042" rpy="0 0 ${pi/2}" />
+        		<xacro:insert_inertia_link9 />
+    		</inertial>				
+		</link>
+
+		<joint name="${side}_wrist_roll_joint" type="revolute">
+			<axis xyz="1 0 0" />			
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<parent link="${side}_wrist_pitch_link" />
+			<child link="${side}_wrist_roll_link" />
+			<limit velocity="2.0" effort="10000"
+				lower="${((reflect * (-1 * w_r_lower + w_r_upper)) / 2) - ((w_r_lower + w_r_upper) / 2)}"
+				upper="${((reflect * (-1 * w_r_lower + w_r_upper)) / 2) + ((w_r_lower + w_r_upper) / 2)}" />				
+			<dynamics damping="0.5" friction="0.0" />
+		</joint>
+
+		<xacro:insert_transmission name="${side}_wrist_roll_joint" />
+
+
+		<link name="${side}_end_effector_link">
+			<visual>
+				<xacro:insert_mesh_link_end_effector />				
+				<origin xyz="0 0 0.03" rpy="0 0 0" />				
+			</visual>			
+			<collision>
+				<xacro:insert_mesh_link_end_effector />				
+				<origin xyz="0 0 0.03" rpy="0 0 0" />				
+			</collision>	
+			<inertial>
+				<origin xyz="0 0 0.015" rpy="0 0 0" />
+        		<xacro:insert_inertia_link_end_effector />
+    		</inertial>			
+		</link>
+
+		<joint name="${side}_end_effector_joint" type="fixed">
+			<origin xyz="0 0 -0.10" rpy="0 0 0" />
+			<parent link="${side}_wrist_roll_link" />
+			<child link="${side}_end_effector_link" />
+		</joint>
+	
+	</xacro:macro>	
+</robot>

@@ -1,0 +1,7 @@
+<launch>
+	<include file="$(find safe_arm_gazebo)/launch/safe_arm_world.launch" /> 
+
+	<include file="$(find safe_arm_control)/launch/joint_state_controller.launch" /> 
+	<include file="$(find safe_arm_control)/launch/l_controller.launch" /> 
+	<include file="$(find safe_arm_control)/launch/r_controller.launch" /> 	
+</launch>

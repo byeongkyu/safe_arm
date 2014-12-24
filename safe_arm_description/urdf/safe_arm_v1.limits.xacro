@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">	
+
+	<xacro:property name="s_y_j_lower" value="1.06"	/>	
+	<xacro:property name="s_y_j_upper" value="0.33"	/>
+	
+	<xacro:property name="s_p_j_lower" value="3.05"	/>	
+	<xacro:property name="s_p_j_upper" value="1.01"	/>
+	
+	<xacro:property name="s_r_j_lower" value="0.095" />	
+	<xacro:property name="s_r_j_upper" value="3.141592"	/>	
+
+	<xacro:property name="u_j_lower" value="2.3" />	
+	<xacro:property name="u_j_upper" value="0.9"	/>	
+
+	<xacro:property name="e_p_lower" value="2.74" />	
+	<xacro:property name="e_p_upper" value="0.12"	/>	
+
+	<xacro:property name="e_y_lower" value="1.76" />	
+	<xacro:property name="e_y_upper" value="1.76" />	
+
+	<xacro:property name="w_p_lower" value="0.86" />	
+	<xacro:property name="w_p_upper" value="0.4" />	
+
+	<xacro:property name="w_r_lower" value="0.7" />	
+	<xacro:property name="w_r_upper" value="0.55" />	
+
+</robot>
