@@ -4,8 +4,9 @@
 	<xacro:macro name="insert_transmission" params="name">
 		<transmission name="${name}_tran">
 			<type>transmission_interface/SimpleTransmission</type>
-			<joint name="${name}">
+			<joint name="${name}" >
 				<hardwareInterface>EffortJointInterface</hardwareInterface>
+				<mechanicalReduction>1</mechanicalReduction>
 			</joint>
 			
 			<actuator name="${name}_motor">
