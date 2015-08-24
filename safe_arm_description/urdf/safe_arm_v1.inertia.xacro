@@ -9,47 +9,56 @@
 
 	<xacro:macro name="insert_inertia_link2">		
         <mass value="0.158676" />        
-        <inertia ixx="0.0001655" ixy="0.0000001" ixz="-0.0000022" iyy="0.0002387" iyz="0.0000000" izz="0.0001580" />        
+        <!--<inertia ixx="0.0001655" ixy="0.0000001" ixz="-0.0000022" iyy="0.0002387" iyz="0.0000000" izz="0.0001580" />-->
+        <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
 	</xacro:macro>
 
 	<xacro:macro name="insert_inertia_link3">		
         <mass value="2.407169" />
-        <inertia ixx="0.0060299" ixy="-0.0001094" ixz="-0.0008418" iyy="0.0065008" iyz="-0.0000735" izz="0.0036095" />         
+        <!--<inertia ixx="0.0060299" ixy="-0.0001094" ixz="-0.0008418" iyy="0.0065008" iyz="-0.0000735" izz="0.0036095" />-->
+        <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
 	</xacro:macro>
 
 	<xacro:macro name="insert_inertia_link4">		
         <mass value="0.154973" />
-        <inertia ixx="0.0002334" ixy="-0.0000001" ixz="-0.0000001" iyy="0.0001478" iyz="0.0000001" izz="0.0001603" />        
+        <!--<inertia ixx="0.0002334" ixy="-0.0000001" ixz="-0.0000001" iyy="0.0001478" iyz="0.0000001" izz="0.0001603" />-->        
+        <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
 	</xacro:macro>
 
 	<xacro:macro name="insert_inertia_link5">		
         <mass value="1.942905" />
-        <inertia ixx="0.0192512" ixy="0.0000665" ixz="0.0002923" iyy="0.0189994" iyz="0.0000665" izz="0.0018648" />        
+        <!--<inertia ixx="0.0192512" ixy="0.0000665" ixz="0.0002923" iyy="0.0189994" iyz="0.0000665" izz="0.0018648" />-->        
+        <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
 	</xacro:macro>
 
 	<xacro:macro name="insert_inertia_link6">		
         <mass value="0.169873" />
-        <inertia ixx="0.0001459" ixy="0.0000045" ixz="-0.0000102" iyy="0.0001907" iyz="0.0000359" izz="0.0001571" />        
+        <!--<inertia ixx="0.0001459" ixy="0.0000045" ixz="-0.0000102" iyy="0.0001907" iyz="0.0000359" izz="0.0001571" />-->        
+        <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
 	</xacro:macro>
 
 	<xacro:macro name="insert_inertia_link7">		
         <mass value="1.498110" />
-        <inertia ixx="0.0093184" ixy="0.0000022" ixz="-0.0003994" iyy="0.0094939" iyz="-0.0000130" izz="0.0015010" />        
+        <!--<inertia ixx="0.0093184" ixy="0.0000022" ixz="-0.0003994" iyy="0.0094939" iyz="-0.0000130" izz="0.0015010" />-->        
+        <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
 	</xacro:macro>
 
 	<xacro:macro name="insert_inertia_link8">		
         <mass value="0.419231" />
-        <inertia ixx="0.0003157" ixy="-0.0000006" ixz="0.0000007" iyy="0.0002646" iyz="0.0000270" izz="0.0002086" />        
+        <!--<inertia ixx="0.0003157" ixy="-0.0000006" ixz="0.0000007" iyy="0.0002646" iyz="0.0000270" izz="0.0002086" />-->        
+        <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
 	</xacro:macro>
 
 	<xacro:macro name="insert_inertia_link9">		
         <mass value="0.329326" />
-        <inertia ixx="0.0000001" ixy="0.0" ixz="0.0" iyy="0.0000001" iyz="0.0" izz="0.0000001" />        
+        <!--<inertia ixx="0.0000001" ixy="0.0" ixz="0.0" iyy="0.0000001" iyz="0.0" izz="0.0000001" />-->        
+        <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
 	</xacro:macro>
 
 	<xacro:macro name="insert_inertia_link_end_effector">		
         <mass value="1.0" />        
-        <inertia ixx="0.0000001" ixy="0.0" ixz="0.0" iyy="0.0000001" iyz="0.0" izz="0.0000001" />
+        <!--<inertia ixx="0.0000001" ixy="0.0" ixz="0.0" iyy="0.0000001" iyz="0.0" izz="0.0000001" />-->
+        <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
 	</xacro:macro>
 
 </robot>
